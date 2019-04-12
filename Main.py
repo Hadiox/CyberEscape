@@ -59,7 +59,7 @@ run = True
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 flag = 0
-bg_speed = 10
+bg_speed = 1
 pygame.time.set_timer(pygame.USEREVENT + 2,200)
 runner = Character(200, 500, 27, 27)
 
