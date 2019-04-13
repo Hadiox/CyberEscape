@@ -12,7 +12,23 @@ def set_screen_prop():
     return pygame.display.set_mode(size, pygame.FULLSCREEN)
 
 
+def draw_runner():
+    runner.display(game_window)
+
+
+def draw_init_objects():
+    for i in range(0, 13):
+        objects.append(Ground(i * 122 - 50, 598, 180, 180))
+
+
+def redraw_background(frame, bg_speed):
+    game_window.blit(background[frame // bg_speed], (0, 0))
+    for obj in objects:
+        obj.draw(game_window)
+
+
 pygame.init()
+clock = pygame.time.Clock()
 usr32 = ctypes.windll.user32
 screen_width = usr32.GetSystemMetrics(1)
 screen_height = usr32.GetSystemMetrics(0)
@@ -24,8 +40,6 @@ if len(os.listdir('resources/background_fit')) == 0:
         img.save('resources/background_fit/frame_' + str(x) + '_delay-0.03s.gif')
 background = [pygame.image.load(os.path.join('resources/background_fit', 'frame_' + str(x) + '_delay-0.03s.gif'))
               for x in range(0, 60)]
-bg_1_x = 0
-clock = pygame.time.Clock()
 
 
 class Character(object):
@@ -47,23 +61,6 @@ class Character(object):
         self.run_counter += 1
 
 
-def redraw_background(frame, bg_speed):
-    game_window.blit(background[frame // bg_speed], (bg_1_x, 0))
-    for obj in objects:
-        obj.draw(game_window)
-
-
-speed = 60
-objects = []
-run = True
-frame_counter = 0
-pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
-flag = 0
-bg_speed = 1
-pygame.time.set_timer(pygame.USEREVENT + 2,200)
-runner = Character(200, 500, 27, 27)
-
-
 class Ground(object):
 
     def __init__(self, x, y, width, height):
@@ -75,20 +72,20 @@ class Ground(object):
         self.img = pygame.image.load(os.path.join('resources/Ground', 'simple_ground.png'))
 
     def draw(self, window):
-        self.hitbox=(self.x+25,self.y+3,self.width,self.height)
+        self.hitbox = (self.x + 25, self.y + 3, self.width, self.height)
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
-        #pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
+        # pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
 
 
-def draw_runner():
-    runner.display(game_window)
-
-
-def draw_init_objects():
-    for i in range (0,13):
-        objects.append(Ground(i*122-50,598,180,180))
-
-
+speed = 60
+objects = []
+run = True
+frame_counter = 0
+pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
+flag = 0
+bg_speed = 1
+pygame.time.set_timer(pygame.USEREVENT + 2, 192)
+runner = Character(200, 500, 27, 27)
 draw_init_objects()
 while run:
     redraw_background(frame_counter, bg_speed)
