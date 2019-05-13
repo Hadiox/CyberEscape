@@ -46,6 +46,59 @@ class Character(object):
         win.blit(pygame.transform.scale(self.run[self.run_counter // self.speed], (100, 100)), (self.x, self.y))
         self.run_counter += 1
 
+class Box(object):
+
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.hitbox = (x, y, width, height)
+        self.img = pygame.image.load(os.path.join('resources/obstacle', 'metal_box.png'))
+
+    def show(self, window):
+        self.hitbox=(self.x+25,self.y+3,self.width,self.height)
+        window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
+
+class Turret(object):
+
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.hitbox = (x, y, width, height)
+        self.img = pygame.image.load(os.path.join('resources/obstacle', 'turret-1.png'))
+
+    def show(self, window):
+        self.hitbox=(self.x+25,self.y+3,self.width,self.height)
+        window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
+
+class Police(object):
+
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.hitbox = (x, y, width, height)
+        self.img = pygame.image.load(os.path.join('resources/obstacle', 'v-police.png'))
+
+    def show(self, window):
+        self.hitbox=(self.x+25,self.y+3,self.width,self.height)
+        window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
+
+
+
+def draw_box():
+    box.show(game_window)
+
+def draw_turret():
+    turret.show(game_window)
+
+def draw_police():
+    police.show(game_window)
+
 
 def redraw_background(frame, bg_speed):
     game_window.blit(background[frame // bg_speed], (bg_1_x, 0))
@@ -62,6 +115,9 @@ flag = 0
 bg_speed = 10
 pygame.time.set_timer(pygame.USEREVENT + 2,200)
 runner = Character(200, 500, 27, 27)
+box = Box(800, 500, 100, 100)
+turret = Turret(500, 500, 100, 100)
+police = Police(950, 500, 300, 100)
 
 
 class Ground(object):
@@ -92,6 +148,9 @@ def draw_init_objects():
 draw_init_objects()
 while run:
     redraw_background(frame_counter, bg_speed)
+    draw_box()
+    draw_turret()
+    draw_police()
     for obj in objects:
         obj.x -= 10
         if obj.x < obj.width * (-1):
