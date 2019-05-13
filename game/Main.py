@@ -10,7 +10,7 @@ def redraw_background(frame, bg_speed):
 while run:
     redraw_background(frame_counter, bg_speed)
     for obj in objects:
-        if obj.id == 1:
+        if obj.id != 0:
             if obj.collide(runner):
                 print("Collided!")
         obj.x -= 10
@@ -28,4 +28,4 @@ while run:
             pygame.quit()
             quit()
         if event.type == pygame.USEREVENT + 2:
-            generator.obstacle = 1
+            generator.obstacle = random.randrange(1,3)
