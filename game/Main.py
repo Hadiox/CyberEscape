@@ -30,5 +30,5 @@ while run:
             pygame.quit()
             quit()
         if event.type == pygame.USEREVENT + 2:
-            generator.obstacle = random.randrange(5,6)
+            generator.obstacle = random.randrange(2,3)
 
