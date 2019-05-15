@@ -1,8 +1,8 @@
 from PIL import Image
 import ctypes
-from game.GroundGenerator import *
-from game.Character import *
-from game.Ground import *
+from CyberEscape.game.GroundGenerator import *
+from CyberEscape.game.Character import *
+from CyberEscape.game.Ground import *
 import random
 
 
@@ -24,6 +24,7 @@ def draw_init_objects():
 
 
 pygame.init()
+pygame.mixer.init()
 clock = pygame.time.Clock()
 usr32 = ctypes.windll.user32
 screen_width = usr32.GetSystemMetrics(1)

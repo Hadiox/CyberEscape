@@ -1,6 +1,6 @@
 import pygame
 import os
-import game.Character
+import CyberEscape.game.Character
 
 
 class Rectangle(object):
