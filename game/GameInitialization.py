@@ -37,7 +37,7 @@ pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(5000,10000))
 flag = 0
 bg_speed = 1
-runner = Character(200, 500, 27, 27)
+runner = Character(200, 500, 100, 100)
 game_window = set_screen_prop()
 if len(os.listdir('resources/background_fit')) == 0:
     for x in range(0, 60):
