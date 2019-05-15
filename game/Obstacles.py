@@ -77,18 +77,42 @@ class Police(object):
         self.id = 3
         self.height = height
         self.hitbox = (x, y, width, height)
+        self.array = [self.hitbox, self.hitbox, self.hitbox, self.hitbox, self.hitbox]
         self.img = pygame.image.load(os.path.join('resources/obstacles', 'v-police.png'))
 
     def draw(self, window):
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.array[0] = (self.x, self.y + 70, self.width - 30, self.height - 70)
+        pygame.draw.rect(window, (255, 0, 0), self.array[0], 2)
+
+        self.array[1] = (self.x + 46, self.y + 45, self.width - 56, self.height - 70)
+        pygame.draw.rect(window, (255, 0, 0), self.array[1], 2)
+
+        self.array[2] = (self.x + 74, self.y + 25, self.width - 77, self.height - 70)
+        pygame.draw.rect(window, (255, 0, 0), self.array[2], 2)
+
+        self.array[3] = (self.x + 100, self.y + 10, self.width - 137, self.height - 80)
+        pygame.draw.rect(window, (255, 0, 0), self.array[3], 2)
+
+        self.array[4] = (self.x + 162, self.y, self.width - 228, self.height - 90)
+        pygame.draw.rect(window, (255, 0, 0), self.array[4], 2)
+
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
-        pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
 
     def collide(self, character):
-        if self.x + self.width > character.x + character.hitbox[0] > self.x:
-            if self.y + self.height > character.y + character.hitbox[1] > self.y:
-                return True
-        return False
+        if (((self.array[0][1] > character.y + character.hitbox[1]) or (character.y  < self.array[0][1] + self.array[0][3]))
+                and ((self.array[0][0] > character.x + character.hitbox[0]) or (character.x  > self.array[0][0] + self.array[0][2]))):
+                return False
+        elif (((self.array[1][1] > character.y + character.hitbox[1]) or (character.y  < self.array[1][1] + self.array[1][3]))
+            and ((self.array[1][0] > character.x + character.hitbox[0]) or (character.x  > self.array[1][0] + self.array[1][2]))):
+                return False
+        elif(((self.array[2][1] > character.y + character.hitbox[1]) or (character.y < self.array[2][1] + self.array[2][3]))
+            and ((self.array[2][0] > character.x + character.hitbox[0]) or (character.x > self.array[2][0] + self.array[2][2]))):
+                return False
+        elif (((self.array[3][1] > character.y + character.hitbox[1]) or (character.y < self.array[3][1] + self.array[3][3]))
+              and ((self.array[3][0] > character.x + character.hitbox[0]) or (character.x > self.array[3][0] + self.array[3][2]))):
+            return False
+        else:
+            return True
 
 class Drone(object):
 

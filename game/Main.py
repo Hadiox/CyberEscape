@@ -1,7 +1,7 @@
 from CyberEscape.game.GameInitialization import *
 
-pygame.mixer.music.load('resources/Music/power_bots.wav')
-pygame.mixer.music.play(1000, 0.0)
+#pygame.mixer.music.load('resources/Music/power_bots.wav')
+#pygame.mixer.music.play(1000, 0.0)
 
 def redraw_background(frame, bg_speed):
     game_window.blit(background[frame // bg_speed], (0, 0))
@@ -30,5 +30,5 @@ while run:
             pygame.quit()
             quit()
         if event.type == pygame.USEREVENT + 2:
-            generator.obstacle = random.randrange(2,3)
+            generator.obstacle = random.randrange(3,4)
 
