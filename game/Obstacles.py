@@ -33,11 +33,11 @@ class Truck(object):
         self.width = width
         self.id = 2
         self.height = height
-        self.hitbox = (x, y, width, height)
+        self.hitbox = (x, y+(height*2//3), width, height//3)
         self.img = pygame.image.load(os.path.join('resources/obstacles', 'v-truck.png'))
 
     def draw(self, window):
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.hitbox = (self.x, self.y+ self.height//3, self.width, self.height//3)
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
         pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
 
