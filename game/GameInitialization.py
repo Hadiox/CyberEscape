@@ -1,8 +1,8 @@
 from PIL import Image
 import ctypes
-from game.GroundGenerator import *
-from game.Character import *
-from game.Ground import *
+from CyberEscape.game.GroundGenerator import *
+from CyberEscape.game.Character import *
+from CyberEscape.game.Ground import *
 import random
 
 
@@ -24,6 +24,7 @@ def draw_init_objects():
 
 
 pygame.init()
+pygame.mixer.init()
 clock = pygame.time.Clock()
 usr32 = ctypes.windll.user32
 screen_width = usr32.GetSystemMetrics(1)
@@ -36,7 +37,7 @@ pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(5000,10000))
 flag = 0
 bg_speed = 1
-runner = Character(200, 500, 27, 27)
+runner = Character(200, 500, 100, 100)
 game_window = set_screen_prop()
 if len(os.listdir('resources/background_fit')) == 0:
     for x in range(0, 60):
