@@ -1,8 +1,8 @@
 from PIL import Image
 import ctypes
-from CyberEscape.game.GroundGenerator import *
-from CyberEscape.game.Character import *
-from CyberEscape.game.Ground import *
+from game.GroundGenerator import *
+from game.Character import *
+from game.Ground import *
 import random
 
 
@@ -34,7 +34,7 @@ objects = []
 run = True
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
-pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(5000,10000))
+pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(3000,5000))
 flag = 0
 bg_speed = 1
 runner = Character(200, 500, 100, 100)

@@ -1,4 +1,4 @@
-from CyberEscape.game.GameInitialization import *
+from game.GameInitialization import *
 
 pygame.mixer.music.load('resources/Music/power_bots.wav')
 pygame.mixer.music.play(1000, 0.0)
@@ -8,13 +8,15 @@ def redraw_background(frame, bg_speed):
     for obj in objects:
         obj.draw(game_window)
 
-
+collided_counter = 0
 while run:
     redraw_background(frame_counter, bg_speed)
     for obj in objects:
         if obj.id != 0:
             if obj.collide(runner):
                 print("Collided!")
+                print(collided_counter)
+                collided_counter+=1
         obj.x -= 10
         if obj.x < obj.width * (-1):
             objects.pop(objects.index(obj))
@@ -31,4 +33,7 @@ while run:
             quit()
         if event.type == pygame.USEREVENT + 2:
             generator.obstacle = random.randrange(1,7)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                runner.jumping = True
 
