@@ -1,6 +1,5 @@
 import pygame
 import os
-import game.Character
 
 
 class Rectangle(object):
