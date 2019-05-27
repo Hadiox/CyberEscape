@@ -1,6 +1,6 @@
 import pygame
 import os
-import game.Character
+import CyberEscape.game.Character
 
 
 class Rectangle(object):
@@ -21,8 +21,8 @@ class Rectangle(object):
         pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.y + character.hitbox[3]) or (character.y  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.x + character.hitbox[2]) or (character.x  > self.array[0][0] + self.array[0][2]))):
+        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
+                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
                     return True
 
         return False
@@ -53,8 +53,8 @@ class Truck(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.y + character.hitbox[3]) or (character.y  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.x + character.hitbox[2]) or (character.x  > self.array[0][0] + self.array[0][2]))):
+        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
+                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
                     return True
         return False
 
@@ -89,24 +89,24 @@ class Police(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.y + character.hitbox[3]) or (character.y > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.x + character.hitbox[2]) or (character.x > self.array[0][0] + self.array[0][2]))):
+        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[0][1] + self.array[0][3]))
+                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[0][0] + self.array[0][2]))):
                     return True
 
-        if not (((self.array[1][1] > character.y + character.hitbox[3]) or (character.y > self.array[1][1] + self.array[1][3]))
-                or ((self.array[1][0] > character.x + character.hitbox[2]) or (character.x > self.array[1][0] + self.array[1][2]))):
+        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[1][1] + self.array[1][3]))
+                or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[1][0] + self.array[1][2]))):
                     return True
 
-        if not (((self.array[2][1] > character.y + character.hitbox[3]) or (character.y > self.array[2][1] + self.array[2][3]))
-                or ((self.array[2][0] > character.x + character.hitbox[2]) or (character.x > self.array[2][0] + self.array[2][2]))):
+        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
+                or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
                     return True
 
-        if not (((self.array[3][1] > character.y + character.hitbox[3]) or (character.y > self.array[3][1] + self.array[2][3]))
-                or ((self.array[3][0] > character.x + character.hitbox[2]) or (character.x > self.array[3][0] + self.array[2][2]))):
+        if not (((self.array[3][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[3][1] + self.array[2][3]))
+                or ((self.array[3][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[3][0] + self.array[2][2]))):
                     return True
 
-        if not (((self.array[4][1] > character.y + character.hitbox[3]) or (character.y > self.array[4][1] + self.array[2][3]))
-                or ((self.array[4][0] > character.x + character.hitbox[2]) or (character.x > self.array[4][0] + self.array[2][2]))):
+        if not (((self.array[4][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[4][1] + self.array[2][3]))
+                or ((self.array[4][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[4][0] + self.array[2][2]))):
                     return True
 
         return False
@@ -136,16 +136,24 @@ class Drone(object):
 
     def collide(self, character):
 
-        if not (((self.array[0][1] > character.y + character.hitbox[3]) or (character.y  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.x + character.hitbox[2]) or (character.x  > self.array[0][0] + self.array[0][2]))):
+        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
+                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
+                    print(character.y)
+                    print(self.array[0][1] + self.array[0][3])
+                    print(character.hitbox[3])
+                    print(character.hitbox[2])
                     return True
 
-        if not (((self.array[1][1] > character.y + character.hitbox[3]) or (character.y  > self.array[1][1] + self.array[1][3]))
-            or ((self.array[1][0] > character.x + character.hitbox[2]) or (character.x  > self.array[1][0] + self.array[1][2]))):
+        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[1][1] + self.array[1][3]))
+            or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[1][0] + self.array[1][2]))):
+                    print(character.hitbox[3])
+                    print(character.hitbox[2])
                     return True
 
-        if not (((self.array[2][1] > character.y + character.hitbox[3]) or (character.y > self.array[2][1] + self.array[2][3]))
-            or ((self.array[2][0] > character.x + character.hitbox[2]) or (character.x > self.array[2][0] + self.array[2][2]))):
+        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
+            or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
+                    print(character.hitbox[3])
+                    print(character.hitbox[2])
                     return True
 
         return False
@@ -178,20 +186,20 @@ class Rider(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.y + character.hitbox[3]) or (character.y  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.x + character.hitbox[2]) or (character.x  > self.array[0][0] + self.array[0][2]))):
+        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
+                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
                     return True
 
-        if not (((self.array[1][1] > character.y + character.hitbox[3]) or (character.y  > self.array[1][1] + self.array[1][3]))
-            or ((self.array[1][0] > character.x + character.hitbox[2]) or (character.x  > self.array[1][0] + self.array[1][2]))):
+        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[1][1] + self.array[1][3]))
+            or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[1][0] + self.array[1][2]))):
                     return True
 
-        if not (((self.array[2][1] > character.y + character.hitbox[3]) or (character.y > self.array[2][1] + self.array[2][3]))
-            or ((self.array[2][0] > character.x + character.hitbox[2]) or (character.x > self.array[2][0] + self.array[2][2]))):
+        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
+            or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
                     return True
 
-        if not (((self.array[3][1] > character.y + character.hitbox[3]) or (character.y > self.array[3][1] + self.array[2][3]))
-            or ((self.array[3][0] > character.x + character.hitbox[2]) or (character.x > self.array[3][0] + self.array[2][2]))):
+        if not (((self.array[3][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[3][1] + self.array[2][3]))
+            or ((self.array[3][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[3][0] + self.array[2][2]))):
                     return True
 
         return False
