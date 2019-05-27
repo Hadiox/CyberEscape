@@ -140,20 +140,14 @@ class Drone(object):
                 or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
                     print(character.y)
                     print(self.array[0][1] + self.array[0][3])
-                    print(character.hitbox[3])
-                    print(character.hitbox[2])
                     return True
 
         if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[1][1] + self.array[1][3]))
             or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[1][0] + self.array[1][2]))):
-                    print(character.hitbox[3])
-                    print(character.hitbox[2])
                     return True
 
         if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
             or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
-                    print(character.hitbox[3])
-                    print(character.hitbox[2])
                     return True
 
         return False
