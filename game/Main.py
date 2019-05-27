@@ -1,4 +1,4 @@
-from game.GameInitialization import *
+from CyberEscape.game.GameInitialization import *
 
 pygame.mixer.music.load('resources/Music/power_bots.wav')
 pygame.mixer.music.play(1000, 0.0)
@@ -36,4 +36,6 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 runner.jumping = True
+            if event.key == pygame.K_DOWN:
+                runner.sliding = True
 

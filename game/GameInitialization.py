@@ -1,8 +1,8 @@
 from PIL import Image
 import ctypes
-from game.GroundGenerator import *
-from game.Character import *
-from game.Ground import *
+from CyberEscape.game.GroundGenerator import *
+from CyberEscape.game.Character import *
+from CyberEscape.game.Ground import *
 import random
 
 

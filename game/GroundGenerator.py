@@ -1,7 +1,7 @@
 import threading
 import time
-from game.Ground import *
-from game.Obstacles import *
+from CyberEscape.game.Ground import *
+from CyberEscape.game.Obstacles import *
 import random
 
 
