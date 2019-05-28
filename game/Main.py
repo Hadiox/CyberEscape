@@ -9,7 +9,11 @@ def redraw_background(frame, bg_speed):
         obj.draw(game_window)
 
 collided_counter = 0
+font = pygame.font.Font(None, 36)
 while run:
+    if game_over == True:
+        pygame.quit()
+        quit()
     redraw_background(frame_counter, bg_speed)
     for obj in objects:
         if obj.id != 0:
@@ -17,6 +21,7 @@ while run:
                 print("Collided!")
                 print(collided_counter)
                 collided_counter+=1
+                game_over = True
         obj.x -= 10
         if obj.x < obj.width * (-1):
             objects.pop(objects.index(obj))

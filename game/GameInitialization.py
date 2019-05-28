@@ -32,6 +32,7 @@ screen_height = usr32.GetSystemMetrics(0)
 speed = 60
 objects = []
 run = True
+game_over = False
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(3000,5000))
