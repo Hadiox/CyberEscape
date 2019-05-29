@@ -1,4 +1,4 @@
-from CyberEscape.game.GameInitialization import *
+from game.GameInitialization import *
 
 pygame.mixer.music.load('resources/Music/power_bots.wav')
 pygame.mixer.music.play(1000, 0.0)
