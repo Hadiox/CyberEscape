@@ -16,7 +16,7 @@ def segment(image,threshold = 25):
     global background
     diff = cv.absdiff(background.astype("uint8"),image)
     thresholded = cv.threshold(diff,threshold,255,cv.THRESH_BINARY)[1]
-    (_,cnts,_) = cv.findContours(thresholded.copy(),cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
+    (cnts,_) = cv.findContours(thresholded.copy(),cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
     if len(cnts) == 0:
         return
     else:
