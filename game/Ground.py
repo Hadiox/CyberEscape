@@ -11,7 +11,7 @@ class Ground(object):
         self.id = 0
         self.height = height
         self.hitbox = (x, y, width, height)
-        self.img = pygame.image.load(os.path.join('resources/Ground', 'simple_ground.jpg'))
+        self.img = pygame.image.load(os.path.join('../resources/Ground', 'simple_ground.jpg'))
 
     def draw(self, window):
         self.hitbox = (self.x + 25, self.y + 3, self.width, self.height)

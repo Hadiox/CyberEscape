@@ -1,13 +1,14 @@
 import pygame
+from game.fingers import *
 import os
 
 
 class Character(object):
-    run = [pygame.image.load(os.path.join('resources/character/run', 'run-' + str(x) + '.png')) for x in
+    run = [pygame.image.load(os.path.join('../resources/character/run', 'run-' + str(x) + '.png')) for x in
            range(1, 8)]
-    jump = [pygame.image.load(os.path.join('resources/character/jump', 'jump-' + str(x) + '.png')) for x in range(1, 4)]
+    jump = [pygame.image.load(os.path.join('../resources/character/jump', 'jump-' + str(x) + '.png')) for x in range(1, 4)]
 
-    slide = [pygame.image.load(os.path.join('resources/character/slide', 'slide.png'))]
+    slide = [pygame.image.load(os.path.join('../resources/character/slide', 'slide.png'))]
 
     def __init__(self, x, y, width, height):
         self.x = x
@@ -47,8 +48,7 @@ class Character(object):
             win.blit(pygame.transform.scale(self.jump[(self.jump_counter // 18) - 1], (100, 100)), (self.x, self.y))
             self.jump_counter += 1
             if self.jump_counter == 32:
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_UP]:
+                if fingers == 2:
                     self.longer_jumping = True
             if self.jump_counter > 65:
                 self.jump_counter = 0

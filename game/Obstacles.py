@@ -1,6 +1,5 @@
 import pygame
 import os
-import game.Character
 
 
 class Rectangle(object):
@@ -13,7 +12,7 @@ class Rectangle(object):
         self.height = height
         self.hitbox = (x, y, width, height)
         self.array = [self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'metalbox.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'metalbox.png'))
 
     def draw(self, window):
         self.array[0] = (self.x, self.y, self.width, self.height)
@@ -37,13 +36,13 @@ class Truck(object):
         self.height = height
         self.hitbox = (x, y+(height*2//3), width, height//3)
         self.array = [self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'v-truck.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'v-truck.png'))
 
     def draw(self, window):
         self.hitbox = (self.x, self.y+ self.height//3, self.width, self.height//3)
         self.hitbox = (self.x, self.y, self.width, self.height)
         self.array = [self.hitbox, self.hitbox, self.hitbox, self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'v-truck.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'v-truck.png'))
 
     def draw(self, window):
         self.array[0] = (self.x + 10, self.y + 130, self.width - 20, self.height - 100)
@@ -68,7 +67,7 @@ class Police(object):
         self.height = height
         self.hitbox = (x, y, width, height)
         self.array = [self.hitbox, self.hitbox, self.hitbox, self.hitbox, self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'v-police.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'v-police.png'))
 
     def draw(self, window):
         self.array[0] = (self.x, self.y + 70, self.width - 30, self.height - 70)
@@ -120,7 +119,7 @@ class Drone(object):
         self.height = height
         self.hitbox = (x, y, width, height)
         self.array = [self.hitbox, self.hitbox, self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'drone.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'drone.png'))
 
     def draw(self, window):
         self.array[0] = (self.x + 22, self.y + 30, self.width - 42, self.height - 40)
@@ -162,7 +161,7 @@ class Rider(object):
         self.height = height
         self.hitbox = (x, y, width, height)
         self.array = [self.hitbox, self.hitbox, self.hitbox, self.hitbox]
-        self.img = pygame.image.load(os.path.join('resources/obstacles', 'rider.png'))
+        self.img = pygame.image.load(os.path.join('../resources/obstacles', 'rider.png'))
 
     def draw(self, window):
         self.array[0] = (self.x - 5, self.y + 50, self.width - 20, self.height - 50)
