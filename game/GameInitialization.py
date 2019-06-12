@@ -19,7 +19,7 @@ def draw_runner():
     runner.display(game_window)
 
 
-def draw_init_objects():
+def draw_init_objects(objects):
     for i in range(0, 13):
         objects.append(Ground(i * 122 - 50, 598, 180, 180))
 
@@ -32,7 +32,6 @@ screen_height = usr32.GetSystemMetrics(0)
 speed = 60
 objects = []
 run = True
-game_over = False
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(6000,10000))
@@ -47,12 +46,8 @@ if len(os.listdir('../resources/background_fit')) == 0:
         img.save('../resources/background_fit/frame_' + str(x) + '_delay-0.03s.gif')
 background = [pygame.image.load(os.path.join('../resources/background_fit', 'frame_' + str(x) + '_delay-0.03s.gif'))
               for x in range(0, 60)]
-menu_title = pygame.image.load(os.path.join('../resources/menu','title.png'))
-menu_calibrate = pygame.image.load(os.path.join('../resources/menu','calibrate.png'))
-menu_play = pygame.image.load(os.path.join('../resources/menu','play.png'))
 aWeight = 0.5
 camera = cv.VideoCapture(0)
 top, right, bottom, left = 80, 350, 295, 590
 num_frames = 0
 calibrated = False
-generator = GroundGenerator(objects, screen_height)

@@ -11,9 +11,10 @@ class GroundGenerator(threading.Thread):
         self.objects = objects
         self.screen_height = screen_height
         self.obstacle = 0
+        self.stopped = False
 
     def run(self):
-        while (True):
+        while not self.stopped:
             if self.obstacle == 1:
                 obs_height = 75
                 obs_width = 75
@@ -88,3 +89,6 @@ class GroundGenerator(threading.Thread):
 
             self.objects.append(Ground(self.screen_height + 20, 598, 400, 180))
             time.sleep(0.500)
+
+    def stop(self):
+        self.stopped = True
