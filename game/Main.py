@@ -1,25 +1,42 @@
 from game.GameInitialization import *
 from game.fingers import *
+import pygameMenu
+from pygameMenu.locals import *
 
 pygame.mixer.music.load('../resources/Music/power_bots.wav')
 pygame.mixer.music.play(1000, 0.0)
 
-def redraw_background(frame, bg_speed):
-    game_window.blit(background[frame // bg_speed], (0, 0))
+def redraw_background():
+    game_window.blit(background[frame_counter // bg_speed], (0, 0))
     for obj in objects:
         obj.draw(game_window)
+
+menu_flag = True
+
+def toggle_menu_flag():
+    print("Dupa")
+    global menu_flag
+    menu_flag = not menu_flag
+    print(menu_flag)
+
 collided_counter = 0
-font = pygame.font.Font(None, 36)
-menu = 1
+font = pygame.font.Font(None, 72)
+
 first_run = 1
-game_window.blit(background[0], (0, 0))
-game_window.blit(menu_title, (350, 100))
-game_window.blit(menu_play,(550,400))
-game_window.blit(menu_calibrate,(250,500))
 pygame.display.update()
+menu = pygameMenu.Menu(game_window, *get_screen_size(), pygameMenu.fonts.FONT_8BIT, "Menu", dopause=False, menu_width=800)
+menu.add_option("Start", toggle_menu_flag)
+menu.add_option("Kalibracja kamery", lambda : print("Kalibracja"))
+
+# print(tuple(map(lambda x: x/2, get_screen_size())))
+
 while run:
-    if menu:
-        pygame.event.get()
+    if menu_flag:
+        events = pygame.event.get()
+        menu.mainloop(events)
+        redraw_background()
+        menu.draw()
+        pygame.display.update()
     #--------------------------------------
     else:
         if first_run:
@@ -47,11 +64,16 @@ while run:
         cv.imshow("Video Feed", clone)
         #--------------------------------------------
         if game_over == True:
+            game_over_text = font.render("Game Over", True, (255, 0, 0))
+            game_window.fill((0,0,0))
+            game_window.blit(game_over_text, dest=tuple(map(lambda x: x/2, get_screen_size())))
+            pygame.display.update()
+            time.sleep(3)
             #camera.release()
             cv.destroyAllWindows()
             pygame.quit()
             quit()
-        redraw_background(frame_counter, bg_speed)
+        redraw_background()
         for obj in objects:
             if obj.id != 0:
                 if obj.collide(runner):
@@ -64,9 +86,6 @@ while run:
                 objects.pop(objects.index(obj))
         draw_runner()
         pygame.display.update()
-        frame_counter += 1
-        if frame_counter == 60 * bg_speed:
-            frame_counter = 0
         clock.tick(speed)
         if fingers == 2:
             if before_fingers == 2:
@@ -99,5 +118,8 @@ while run:
                     runner.jumping = True
                 if event.key == pygame.K_DOWN:
                     runner.sliding = True
+    frame_counter += 1
+    if frame_counter == 60 * bg_speed:
+        frame_counter = 0
 #camera.release()
 cv.destroyAllWindows()

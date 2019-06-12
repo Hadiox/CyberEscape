@@ -6,13 +6,13 @@ from game.Ground import *
 import random
 from opencv.detection import *
 
+def get_screen_size():
+    user32 = ctypes.windll.user32
+    return user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
 def set_screen_prop():
-    user32 = ctypes.windll.user32
-    screen_size = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-    size = screen_size
     pygame.display.set_caption("Window")
-    return pygame.display.set_mode(size)
+    return pygame.display.set_mode(get_screen_size())
 
 
 def draw_runner():
