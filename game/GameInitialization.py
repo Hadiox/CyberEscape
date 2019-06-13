@@ -1,6 +1,5 @@
 from PIL import Image
 import ctypes
-from game.GroundGenerator import *
 from game.Character import *
 from game.Ground import *
 import random
@@ -35,7 +34,6 @@ run = True
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
 pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(6000,10000))
-flag = 0
 bg_speed = 1
 runner = Character(200, 500, 100, 100)
 game_window = set_screen_prop()
@@ -50,4 +48,3 @@ aWeight = 0.5
 camera = cv.VideoCapture(0)
 top, right, bottom, left = 80, 350, 295, 590
 num_frames = 0
-calibrated = False

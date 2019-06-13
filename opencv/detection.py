@@ -1,5 +1,6 @@
 from opencv.detection_utils import *
 from opencv.finger_counter import *
+import imutils
 
 
 def detect():

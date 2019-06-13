@@ -1,6 +1,6 @@
 from game.GameInitialization import *
-from game.fingers import *
 import pygameMenu
+from game.GroundGenerator import *
 from pygameMenu.locals import *
 
 pygame.mixer.music.load('../resources/Music/power_bots.wav')

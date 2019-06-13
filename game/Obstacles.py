@@ -88,26 +88,10 @@ class Police(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[0][0] + self.array[0][2]))):
-                    return True
-
-        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[1][1] + self.array[1][3]))
-                or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[1][0] + self.array[1][2]))):
-                    return True
-
-        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
-                or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
-                    return True
-
-        if not (((self.array[3][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[3][1] + self.array[2][3]))
-                or ((self.array[3][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[3][0] + self.array[2][2]))):
-                    return True
-
-        if not (((self.array[4][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[4][1] + self.array[2][3]))
-                or ((self.array[4][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[4][0] + self.array[2][2]))):
-                    return True
-
+        for i in range(0,5):
+            if not (((self.array[i][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[i][1] + self.array[i][3]))
+                    or ((self.array[i][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[i][0] + self.array[i][2]))):
+                        return True
         return False
 class Drone(object):
 
@@ -134,21 +118,10 @@ class Drone(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-
-        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
-                    print(character.y)
-                    print(self.array[0][1] + self.array[0][3])
-                    return True
-
-        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[1][1] + self.array[1][3]))
-            or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[1][0] + self.array[1][2]))):
-                    return True
-
-        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
-            or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
-                    return True
-
+        for i in range(0,3):
+            if not (((self.array[i][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[i][1] + self.array[i][3]))
+                    or ((self.array[i][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[i][0] + self.array[i][2]))):
+                        return True
         return False
 
 class Rider(object):
@@ -179,22 +152,10 @@ class Rider(object):
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
 
     def collide(self, character):
-        if not (((self.array[0][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[0][1] + self.array[0][3]))
-                or ((self.array[0][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[0][0] + self.array[0][2]))):
-                    return True
-
-        if not (((self.array[1][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[1][1] + self.array[1][3]))
-            or ((self.array[1][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[1][0] + self.array[1][2]))):
-                    return True
-
-        if not (((self.array[2][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[2][1] + self.array[2][3]))
-            or ((self.array[2][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[2][0] + self.array[2][2]))):
-                    return True
-
-        if not (((self.array[3][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1] > self.array[3][1] + self.array[2][3]))
-            or ((self.array[3][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0] > self.array[3][0] + self.array[2][2]))):
-                    return True
-
+        for i in range(0,4):
+            if not (((self.array[i][1] > character.hitbox[1] + character.hitbox[3]) or (character.hitbox[1]  > self.array[i][1] + self.array[i][3]))
+                    or ((self.array[i][0] > character.hitbox[0] + character.hitbox[2]) or (character.hitbox[0]  > self.array[i][0] + self.array[i][2]))):
+                        return True
         return False
 
 

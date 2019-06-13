@@ -2,7 +2,6 @@ import threading
 import time
 from game.Ground import *
 from game.Obstacles import *
-import random
 
 
 class GroundGenerator(threading.Thread):
