@@ -5,13 +5,15 @@ from game.Ground import *
 import random
 from opencv.detection import *
 
+
 def get_screen_size():
     user32 = ctypes.windll.user32
     return user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
+
 def set_screen_prop():
     pygame.display.set_caption("Window")
-    return pygame.display.set_mode(get_screen_size(),pygame.RESIZABLE)
+    return pygame.display.set_mode(get_screen_size(), pygame.RESIZABLE)
 
 
 def draw_runner():
@@ -21,6 +23,7 @@ def draw_runner():
 def draw_init_objects(objects):
     for i in range(0, 13):
         objects.append(Ground(i * 122 - 50, 598, 180, 180))
+
 
 pygame.init()
 pygame.mixer.init()
@@ -33,7 +36,7 @@ objects = []
 run = True
 frame_counter = 0
 pygame.time.set_timer(pygame.USEREVENT + 1, 120000)
-pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(6000,10000))
+pygame.time.set_timer(pygame.USEREVENT + 2, random.randrange(6000, 10000))
 bg_speed = 1
 runner = Character(200, 500, 100, 100)
 game_window = set_screen_prop()

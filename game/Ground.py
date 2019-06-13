@@ -16,4 +16,4 @@ class Ground(object):
     def draw(self, window):
         self.hitbox = (self.x + 25, self.y + 3, self.width, self.height)
         window.blit(pygame.transform.scale(self.img, (self.width, self.height)), (self.x, self.y))
-        #pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)
+        # pygame.draw.rect(window, (255, 0, 0), self.hitbox, 2)

@@ -34,14 +34,14 @@ class GroundGenerator(threading.Thread):
                 obs_height = 200
                 obs_width = 350
                 self.objects.append(Truck(self.screen_height + 20, 598 - obs_height, obs_width,
-                                              obs_height))
+                                          obs_height))
                 self.obstacle = 0
 
             if self.obstacle == 3:
                 obs_height = 100
                 obs_width = 250
                 self.objects.append(Police(self.screen_height + 20, 598 - obs_height, obs_width,
-                                          obs_height))
+                                           obs_height))
                 self.obstacle = 0
 
             if self.obstacle == 4:
@@ -70,7 +70,7 @@ class GroundGenerator(threading.Thread):
                                           obs_height))
                 self.objects.append(Drone(self.screen_height + 100, 460 - obs_height, obs_width,
                                           obs_height))
-                self.objects.append(Drone(self.screen_height + 180, 375  - obs_height, obs_width,
+                self.objects.append(Drone(self.screen_height + 180, 375 - obs_height, obs_width,
                                           obs_height))
                 self.objects.append(Drone(self.screen_height + 260, 460 - obs_height, obs_width,
                                           obs_height))
@@ -83,8 +83,6 @@ class GroundGenerator(threading.Thread):
                 self.objects.append(Drone(self.screen_height + 580, 460 - obs_height, obs_width,
                                           obs_height))
                 self.obstacle = 0
-
-
 
             self.objects.append(Ground(self.screen_height + 20, 598, 400, 180))
             time.sleep(0.500)

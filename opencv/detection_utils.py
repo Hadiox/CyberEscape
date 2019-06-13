@@ -20,4 +20,4 @@ def segment(image, threshold=25):
         return
     else:
         segmented = max(cnts, key=cv.contourArea)
-        return (thresholded, segmented)
+        return thresholded, segmented

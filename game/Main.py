@@ -29,6 +29,7 @@ def toggle_menu_flag():
 collided_counter = 0
 font = pygame.font.Font(None, 72)
 
+
 def game():
     global num_frames, collided_counter, before_fingers, finger_times_counter, fingers, objects
     game_over = False
@@ -55,7 +56,7 @@ def game():
         num_frames += 1
         cv.namedWindow("Video Feed", cv.WINDOW_NORMAL)
         cv.imshow("Video Feed", clone)
-        cv.resizeWindow("Video Feed", 400,300)
+        cv.resizeWindow("Video Feed", 400, 300)
         # --------------------------------------------
         if game_over == True:
             game_over_text = font.render("Game Over", True, (255, 0, 0))
@@ -114,6 +115,7 @@ def game():
                     runner.sliding = True
     generator.stop()
 
+
 def calibrate():
     for _ in range(30):
         (grabbed, frame) = camera.read()
@@ -129,6 +131,7 @@ def calibrate():
         cv.imshow("Video Feed", clone)
         cv.resizeWindow("Video Feed", 400, 300)
     print("Calibrated")
+
 
 menu = pygameMenu.Menu(game_window, *get_screen_size(), pygameMenu.fonts.FONT_8BIT, "Menu", bgfun=redraw_background,
                        menu_width=800)

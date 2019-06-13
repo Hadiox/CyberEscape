@@ -6,7 +6,8 @@ import os
 class Character(object):
     run = [pygame.image.load(os.path.join('../resources/character/run', 'run-' + str(x) + '.png')) for x in
            range(1, 8)]
-    jump = [pygame.image.load(os.path.join('../resources/character/jump', 'jump-' + str(x) + '.png')) for x in range(1, 4)]
+    jump = [pygame.image.load(os.path.join('../resources/character/jump', 'jump-' + str(x) + '.png')) for x in
+            range(1, 4)]
 
     slide = [pygame.image.load(os.path.join('../resources/character/slide', 'slide.png'))]
 
@@ -68,4 +69,4 @@ class Character(object):
         else:
             win.blit(pygame.transform.scale(self.run[self.run_counter // self.speed], (100, 100)), (self.x, self.y))
             self.run_counter += 1
-        #pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
+        # pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
