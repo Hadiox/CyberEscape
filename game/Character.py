@@ -68,4 +68,4 @@ class Character(object):
         else:
             win.blit(pygame.transform.scale(self.run[self.run_counter // self.speed], (100, 100)), (self.x, self.y))
             self.run_counter += 1
-        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)

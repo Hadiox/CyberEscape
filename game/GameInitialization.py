@@ -12,7 +12,7 @@ def get_screen_size():
 
 def set_screen_prop():
     pygame.display.set_caption("Window")
-    return pygame.display.set_mode(get_screen_size())
+    return pygame.display.set_mode(get_screen_size(),pygame.RESIZABLE)
 
 
 def draw_runner():

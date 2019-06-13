@@ -53,7 +53,9 @@ def game():
             cv.putText(clone, str(fingers), (70, 45), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         cv.rectangle(clone, (left, top), (right, bottom), (0, 255, 0), 2)
         num_frames += 1
+        cv.namedWindow("Video Feed", cv.WINDOW_NORMAL)
         cv.imshow("Video Feed", clone)
+        cv.resizeWindow("Video Feed", 400,300)
         # --------------------------------------------
         if game_over == True:
             game_over_text = font.render("Game Over", True, (255, 0, 0))
@@ -123,14 +125,16 @@ def calibrate():
         gray = cv.GaussianBlur(gray, (7, 7), 0)
         find_run_avg(gray, aWeight)
         cv.rectangle(clone, (left, top), (right, bottom), (0, 255, 0), 2)
+        cv.namedWindow("Video Feed", cv.WINDOW_NORMAL)
         cv.imshow("Video Feed", clone)
+        cv.resizeWindow("Video Feed", 400, 300)
     print("Calibrated")
 
 menu = pygameMenu.Menu(game_window, *get_screen_size(), pygameMenu.fonts.FONT_8BIT, "Menu", bgfun=redraw_background,
                        menu_width=800)
 menu.add_option("Start", game)
 menu.add_option("Kalibracja kamery", calibrate)
-menu.add_option("Wyjście", PYGAME_MENU_EXIT)
+menu.add_option("Wyjscie", PYGAME_MENU_EXIT)
 
 redraw_background()
 pygame.display.update()
